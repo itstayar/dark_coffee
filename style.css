@@ -135,11 +135,13 @@ section h2 {
   background-color: #1c1c1c;
   border-radius: 20px;
   padding: 15px;
-  width: 220px;
+  width: 100%;        /* خليها تاخذ عرض العمود */
+  max-width: 220px;   /* حتى ما تكبر أكثر من المطلوب */
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.3s;
   font-family: 'Gotham', Arial, sans-serif;
 }
+
 
 .item:hover {
   transform: scale(1.03);
