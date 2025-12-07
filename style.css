@@ -1,38 +1,24 @@
-body {
-  direction: rtl;
-}
-
-/* ✅ تعريف خط Gotham */
-@font-face {
-  font-family: 'Gotham';
-  src: url('fonts/Gotham.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* ✅ إعدادات عامة */
-html {
-  scroll-behavior: smooth;
-}
-
+/* General Styles */
 body {
   font-family: 'Gotham', Arial, sans-serif;
-  background-color: #0f0f0f; /* خلفية داكنة */
+  background-color: #0f0f0f;
   color: #fff;
   text-align: center;
   margin: 0;
   padding: 60px 0 0 0;
+  direction: rtl;
 }
 
-/* ✅ العنوان */
+html {
+  scroll-behavior: smooth;
+}
+
 h1 {
   font-size: xx-large;
   color: beige;
   margin-bottom: 20px;
 }
 
-
-/* ✅ الهيدر */
 .hero {
   background-color: #0f0f0f;
   padding: 30px 20px 10px;
@@ -61,7 +47,6 @@ h1 {
   margin: 0;
 }
 
-/* ✅ التول بار */
 .toolbar {
   display: flex;
   justify-content: center;
@@ -81,7 +66,6 @@ h1 {
   background-color: #023808;
   border-radius: 12px;
   transition: background-color 0.3s;
-  font-family: 'Gotham', Arial, sans-serif;
 }
 
 .toolbar a:hover,
@@ -90,9 +74,7 @@ h1 {
   color: #f0f0f0;
 }
 
-}
-
-/* ✅ السكشنات */
+/* Section Styles */
 section {
   padding: 40px 20px;
   text-align: center;
@@ -104,248 +86,152 @@ section h2 {
   margin-bottom: 30px;
 }
 
-/* ✅ شبكة البطاقات */
-/* الشبكة الأساسية */
+/* Item Card Styles */
+.item {
+  background-color: #1c1c1c;
+  border-radius: 20px;
+  padding: 15px;
+  width: 100%;        /* Make items take full column width */
+  max-width: 220px;   /* Keep the max width for consistency */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.item:hover {
+  transform: scale(1.03);
+}
+
+.item img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+.item h2,
+.item h3 {
+  font-size: 18px;
+  color: #f5f5f5;
+  margin: 10px 0 5px;
+}
+
+.price-boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.price {
+  background-color: #023808;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: bold;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Menu Grid */
 .menu {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* ثلاث بطاقات بالديسكتوب */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 0 20px;
   justify-items: center;
+  justify-content: center;
 }
 
-/* للشاشات اللوحية (تابلت) */
-@media (max-width: 768px) {
-  .menu {
-    grid-template-columns: repeat(3, 1fr); /* ثلاث بطاقات */
+@media (max-width: 840px) {
+
+  .item{
+    max-width: 80%;
   }
 }
 
-/* للشاشات الصغيرة (موبايل) */
+/* Media Query for Mobile */
+@media (max-width: 568px) {
+  /* Adjust grid for smaller screens */
+  .menu {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 90%;
+    padding: 0 10px;
+  }
+
+  /* Adjust item width */
+  .item {
+    max-width: 100%;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toolbar a {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Modify hero padding and text size */
+  .hero {
+    padding: 20px 10px;
+  }
+
+  .logo h1 {
+    font-size: 28px;
+  }
+
+  section h2 {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 480px) {
-  .menu {
-    grid-template-columns: repeat(2, 1fr); /* بطاقتين */
+  /* Stack the items on very small screens */
+  .menu{
+    padding: 0.8rem;
+    gap: 28px;
+  }
+
+  .item {
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    padding: 8px;
+    justify-content: center;
+  }
+
+  .toolbar a {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;
+
   }
 }
 
 
+@media (max-width: 418px) {
+  .menu {
+    gap: 6px;
+    justify-content: center;
+  }
+  .item {
+    max-width: 80%;
+    font-size: 14px;
+    padding: 8px;
+    margin: 8px;
+  }
 
-/* ✅ بطاقة المشروب */
-.item {
-  background-color: #1c1c1c;
-  border-radius: 20px;
-  padding: 15px;
-  width: 100%;        /* خليها تاخذ عرض العمود */
-  max-width: 220px;   /* حتى ما تكبر أكثر من المطلوب */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-  font-family: 'Gotham', Arial, sans-serif;
-}
-
-
-.item:hover {
-  transform: scale(1.03);
-}
-
-/* ✅ صورة المشروب */
-.item img {
-  width: 100%;
-  border-radius: 16px;
-  margin-bottom: 10px;
-}
-
-/* ✅ اسم المشروب */
-.item h2,
-.item h3 {
-  font-size: 18px;
-  color: #f5f5f5;
-  margin: 10px 0 5px;
-}
-
-.price-boxes {
-  display: flex;
-  flex-direction: column; /* يخليهم تحت بعض */
-  align-items: center;    /* بالسنتر داخل الايتم */
-  gap: 8px;               /* مسافة بين المستطيلين */
-  margin-top: 10px;
-}
-
-.price {
-  background-color: #023808; /* نفس لون التول بار */
-  color: #fff;
-  padding: 6px 12px;         /* أصغر */
-  border-radius: 12px;       /* كيرف ناعم */
-  font-size: 13px;
-  font-weight: bold;
-  min-width: 100px;          /* حجم ثابت */
-  text-align: center;
-}
-
-
-=======
-body {
-  direction: rtl;
-}
-
-/* ✅ تعريف خط Gotham */
-@font-face {
-  font-family: 'Gotham';
-  src: url('fonts/Gotham.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* ✅ إعدادات عامة */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Gotham', Arial, sans-serif;
-  background-color: #0f0f0f; /* خلفية داكنة */
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  padding: 60px 0 0 0;
-}
-
-/* ✅ العنوان */
-h1 {
-  font-size: xx-large;
-  color: beige;
-  margin-bottom: 20px;
-}
-
-
-/* ✅ الهيدر */
-.hero {
-  background-color: #0f0f0f;
-  padding: 30px 20px 10px;
-  text-align: center;
-  border-bottom: 1px solid #333;
-}
-
-.logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.logo h1 {
-  font-family: 'Gotham', Arial, sans-serif;
-  font-size: 35px;
-  color: beige;
-  margin: 0;
-}
-
-/* ✅ التول بار */
-.toolbar {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 20px;
-  background-color: #023808;
-  padding: 10px 16px;
-  border-radius: 16px;
-}
-
-.toolbar a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  padding: 8px 14px;
-  background-color: #023808;
-  border-radius: 12px;
-  transition: background-color 0.3s;
-  font-family: 'Gotham', Arial, sans-serif;
-}
-
-.toolbar a:hover,
-.toolbar a.active {
-  background-color: #035c0a;
-  color: #f0f0f0;
-}
+  img{
+    max-height: 70%;
+  }
 
 }
-
-/* ✅ السكشنات */
-section {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-section h2 {
-  font-size: 24px;
-  color: #ffffff;
-  margin-bottom: 30px;
-}
-
-/* ✅ شبكة البطاقات */
-.menu {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* ثلاث بطاقات بالسطر */
-  gap: 20px;
-  padding: 0 20px;
-  justify-items: center;
-}
-
-
-/* ✅ بطاقة المشروب */
-.item {
-  background-color: #1c1c1c;
-  border-radius: 20px;
-  padding: 15px;
-  width: 220px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-  font-family: 'Gotham', Arial, sans-serif;
-}
-
-.item:hover {
-  transform: scale(1.03);
-}
-
-/* ✅ صورة المشروب */
-.item img {
-  width: 100%;
-  border-radius: 16px;
-  margin-bottom: 10px;
-}
-
-/* ✅ اسم المشروب */
-.item h2,
-.item h3 {
-  font-size: 18px;
-  color: #f5f5f5;
-  margin: 10px 0 5px;
-}
-
-.price-boxes {
-  display: flex;
-  flex-direction: column; /* يخليهم تحت بعض */
-  align-items: center;    /* بالسنتر داخل الايتم */
-  gap: 8px;               /* مسافة بين المستطيلين */
-  margin-top: 10px;
-}
-
-.price {
-  background-color: #023808; /* نفس لون التول بار */
-  color: #fff;
-  padding: 6px 12px;         /* أصغر */
-  border-radius: 12px;       /* كيرف ناعم */
-  font-size: 13px;
-  font-weight: bold;
-  min-width: 100px;          /* حجم ثابت */
-  text-align: center;
-}
-
-
